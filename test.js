@@ -4,30 +4,81 @@ const objectDeepFromEntries = require("./object-deep-from-entries")
 
 const isPlainObject = require("./isPlainObject")
 
-test(
-  "Should just return an empty object when passed empty entries array",
-  t => {
-    t.plan(1)
+test("Should always return a plain object when array given", t => {
+  t.plan(1)
 
-    const actual = objectDeepFromEntries([])
+  const actual = objectDeepFromEntries([])
 
-    t.true(isPlainObject(actual))
-  }
-)
+  t.true(isPlainObject(actual))
+})
 
-test("Should return an expected flat object", t => {
+test("Should correctly resolve simple (flat) object", t => {
   t.plan(1)
 
   const expected = {
     name: "John Doe",
-    age: 24,
-    gender: "male"
+    age: 25,
+    gender: "Male"
   }
 
   const actual = objectDeepFromEntries([
-    ["name", "John Doe"],
-    ["age", 24],
-    ["gender", "male"]
+    [
+      "name", "John Doe"
+    ],
+    [
+      "age", 25
+    ],
+    [
+      "gender", "Male"
+    ]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should correctly create an array", t => {
+  t.plan(1)
+
+  const expected = {
+    foo: [
+      42, "bar", {
+        bar: "baz"
+      }
+    ],
+    bar: {
+      baz: "boo"
+    },
+    field: "some whatever value",
+    lvl0: {
+      lvl1: [
+        {
+          lvl2: {
+            lvlN: 451
+          }
+        }
+      ]
+    }
+  }
+
+  const actual = objectDeepFromEntries([
+    [
+      ["foo", 0], 42
+    ],
+    [
+      ["foo", 1], "bar"
+    ],
+    [
+      ["foo", 2, "bar"], "baz"
+    ],
+    [
+      ["bar", "baz"], "boo"
+    ],
+    [
+      ["field"], "some whatever value"
+    ],
+    [
+      ["lvl0", "lvl1", 0, "lvl2", "lvlN"], 451
+    ]
   ])
 
   t.deepEqual(actual, expected)

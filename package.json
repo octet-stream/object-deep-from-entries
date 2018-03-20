@@ -7,11 +7,20 @@
   "author": "Nick K. <nick.kruchinin@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "test": "node_modules/.bin/ava test.js",
+    "staged": "node_modules/.bin/lint-staged",
+    "precommit": "yarn staged",
+    "prepush": "yarn test"
+  },
   "devDependencies": {
-    "@octetstream/eslint-config": "^2.1.0",
-    "ava": "^0.25.0",
-    "eslint": "^4.19.0",
-    "eslint-plugin-ava": "^4.5.1",
-    "lint-staged": "^7.0.0"
+    "@octetstream/eslint-config": "2.1.0",
+    "ava": "0.25.0",
+    "codecov": "3.0.0",
+    "eslint": "4.19.0",
+    "eslint-plugin-ava": "4.5.1",
+    "husky": "0.14.3",
+    "lint-staged": "7.0.0",
+    "nyc": "11.6.0"
   }
 }
