@@ -177,3 +177,96 @@ test("Should resolve a complex object", t => {
 
   t.deepEqual(actual, expected)
 })
+
+test("Should return a flat collection", t => {
+  t.plan(1)
+
+  const expected = [
+    {
+      firstName: "John",
+      lastName: "Doe",
+      dob: {
+        day: 1,
+        month: "Jan.",
+        year: 1989
+      },
+      skills: ["Node.js", "CoffeeScript", "JavaScript", "Babel"]
+    },
+    {
+      firstName: "Max",
+      lastName: "Doe",
+      dob: {
+        day: 12,
+        month: "Mar.",
+        year: 1992
+      },
+      skills: ["Python", "Flask", "JavaScript", "Babel", "React", "Redux"]
+    }
+  ]
+
+  const actual = objectDeepFromEntries([
+    [
+      [0, "firstName"], "John"
+    ],
+    [
+      [0, "lastName"], "Doe"
+    ],
+    [
+      [0, "dob", "day"], 1
+    ],
+    [
+      [0, "dob", "month"], "Jan."
+    ],
+    [
+      [0, "dob", "year"], 1989
+    ],
+    [
+      [0, "skills", 0], "Node.js"
+    ],
+    [
+      [0, "skills", 1], "CoffeeScript"
+    ],
+    [
+      [0, "skills", 2], "JavaScript"
+    ],
+    [
+      [0, "skills", 3], "Babel"
+    ],
+
+    [
+      [1, "firstName"], "Max"
+    ],
+    [
+      [1, "lastName"], "Doe"
+    ],
+    [
+      [1, "dob", "day"], 12
+    ],
+    [
+      [1, "dob", "month"], "Mar."
+    ],
+    [
+      [1, "dob", "year"], 1992
+    ],
+    [
+      [1, "skills", 0], "Python"
+    ],
+    [
+      [1, "skills", 1], "Flask"
+    ],
+    [
+      [1, "skills", 2], "JavaScript"
+    ],
+    [
+      [1, "skills", 3], "Babel"
+    ],
+    [
+      [1, "skills", 4], "React"
+    ],
+    [
+      [1, "skills", 5], "Redux"
+    ]
+  ])
+
+  t.deepEqual(actual, expected)
+})

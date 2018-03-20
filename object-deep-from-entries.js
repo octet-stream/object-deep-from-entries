@@ -65,7 +65,17 @@ function deepFromEntries(target, path, value) {
  * // -> {name: "John Doe", age: 25, gender: "Male"}
  */
 function objectDeepFromEntries(entries) {
-  const res = {}
+  let res = {}
+  let isCollection = false
+
+  if (
+    entries.find(([path]) => (
+      typeof path === "number" || (isArray(path) && typeof path[0] === "number")
+    ))
+  ) {
+    res = []
+    isCollection = true
+  }
 
   for (const entry of entries) {
     let path = entry[0]
@@ -77,8 +87,12 @@ function objectDeepFromEntries(entries) {
 
     const root = path.shift()
 
-    if (path.length < 1) {
+    if (path.length < 1 && (isCollection && isNaN(root))) {
+      res.push({[root]: value})
+    } else if (path.length < 1) {
       res[root] = value
+    } else if (isCollection && isNaN(root)) {
+      res.push({[root]: deepFromEntries(res[root], path, value)})
     } else {
       res[root] = deepFromEntries(res[root], path, value)
     }
