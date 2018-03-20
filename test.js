@@ -1,6 +1,6 @@
 const test = require("ava")
 
-const objectDeepFromEntries = require("./object-deep-from-entries")
+const objectDeepFromEntries = require(".")
 
 const isPlainObject = require("./isPlainObject")
 
