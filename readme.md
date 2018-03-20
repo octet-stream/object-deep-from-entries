@@ -1,6 +1,10 @@
 # object-deep-from-entries
 
-  Make an object or collection from entries deeply.
+Make an object or collection from entries deeply.
+
+[![devDependencies Status](https://david-dm.org/octet-stream/invariant/dev-status.svg)](https://david-dm.org/octet-stream/invariant?type=dev)
+[![Build Status](https://travis-ci.org/octet-stream/invariant.svg?branch=master)](https://travis-ci.org/octet-stream/invariant)
+[![Code Coverage](https://codecov.io/github/octet-stream/invariant/coverage.svg?branch=master)](https://codecov.io/github/octet-stream/invariant?branch=master)
 
 ## Installation
 
