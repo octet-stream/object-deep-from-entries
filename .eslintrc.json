@@ -1,0 +1,12 @@
+{
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "ava"
+  ],
+  "extends": [
+    "@octetstream",
+    "plugin:ava/recommended"
+  ]
+}

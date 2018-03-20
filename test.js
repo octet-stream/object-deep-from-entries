@@ -1,0 +1,128 @@
+const test = require("ava")
+
+const objectDeepFromEntries = require("./object-deep-from-entries")
+
+const isPlainObject = require("./isPlainObject")
+
+test(
+  "Should just return an empty object when passed empty entries array",
+  t => {
+    t.plan(1)
+
+    const actual = objectDeepFromEntries([])
+
+    t.true(isPlainObject(actual))
+  }
+)
+
+test("Should return an expected flat object", t => {
+  t.plan(1)
+
+  const expected = {
+    name: "John Doe",
+    age: 24,
+    gender: "male"
+  }
+
+  const actual = objectDeepFromEntries([
+    ["name", "John Doe"],
+    ["age", 24],
+    ["gender", "male"]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should resolve a complex object", t => {
+  t.plan(1)
+
+  const expected = {
+    subjects: [
+      {
+        firstName: "John",
+        lastName: "Doe",
+        dob: {
+          day: 1,
+          month: "Jan.",
+          year: 1989
+        },
+        skills: ["Node.js", "CoffeeScript", "JavaScript", "Babel"]
+      }, {
+        firstName: "Max",
+        lastName: "Doe",
+        dob: {
+          day: 12,
+          month: "Mar.",
+          year: 1992
+        },
+        skills: ["Python", "Flask", "JavaScript", "Babel", "React", "Redux"]
+      }
+    ]
+  }
+
+  const actual = objectDeepFromEntries([
+    [
+      ["subjects", 0, "firstName"], "John"
+    ],
+    [
+      ["subjects", 0, "lastName"], "Doe"
+    ],
+    [
+      ["subjects", 0, "dob", "day"], 1
+    ],
+    [
+      ["subjects", 0, "dob", "month"], "Jan."
+    ],
+    [
+      ["subjects", 0, "dob", "year"], 1989
+    ],
+    [
+      ["subjects", 0, "skills", 0], "Node.js"
+    ],
+    [
+      ["subjects", 0, "skills", 1], "CoffeeScript"
+    ],
+    [
+      ["subjects", 0, "skills", 2], "JavaScript"
+    ],
+    [
+      ["subjects", 0, "skills", 3], "Babel"
+    ],
+
+    [
+      ["subjects", 1, "firstName"], "Max"
+    ],
+    [
+      ["subjects", 1, "lastName"], "Doe"
+    ],
+    [
+      ["subjects", 1, "dob", "day"], 12
+    ],
+    [
+      ["subjects", 1, "dob", "month"], "Mar."
+    ],
+    [
+      ["subjects", 1, "dob", "year"], 1992
+    ],
+    [
+      ["subjects", 1, "skills", 0], "Python"
+    ],
+    [
+      ["subjects", 1, "skills", 1], "Flask"
+    ],
+    [
+      ["subjects", 1, "skills", 2], "JavaScript"
+    ],
+    [
+      ["subjects", 1, "skills", 3], "Babel"
+    ],
+    [
+      ["subjects", 1, "skills", 4], "React"
+    ],
+    [
+      ["subjects", 1, "skills", 5], "Redux"
+    ]
+  ])
+
+  t.deepEqual(actual, expected)
+})
