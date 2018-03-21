@@ -7,6 +7,15 @@
   "author": "Nick K. <nick.kruchinin@gmail.com>",
   "license": "MIT",
   "types": "objectDeepFromEntries.d.ts",
+  "keywords": [
+    "object",
+    "deep",
+    "entries",
+    "from-entries",
+    "object-from-entries",
+    "convert",
+    "collection"
+  ],
   "scripts": {
     "test": "node_modules/.bin/ava test.js",
     "staged": "node_modules/.bin/lint-staged",

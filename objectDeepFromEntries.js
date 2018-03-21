@@ -51,7 +51,7 @@ function deepFromEntries(target, path, value) {
  *
  * @return {object}
  *
- * @api private
+ * @api public
  *
  * @example
  *
@@ -111,9 +111,3 @@ function objectDeepFromEntries(entries) {
 
 module.exports = objectDeepFromEntries
 module.exports.default = objectDeepFromEntries
-
-// For babel
-Object.defineProperty(module.exports, "__esModule", {
-  value: true,
-  enumerable: false
-})
