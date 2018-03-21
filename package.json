@@ -2,11 +2,11 @@
   "name": "object-deep-from-entries",
   "version": "0.2.0",
   "description": "Make an object or collection from entries deeply.",
-  "main": "object-deep-from-entries.js",
+  "main": "objectDeepFromEntries.js",
   "repository": "octet-stream/object-deep-from-entries",
   "author": "Nick K. <nick.kruchinin@gmail.com>",
   "license": "MIT",
-  "types": "object-deep-from-entries.d.ts",
+  "types": "objectDeepFromEntries.d.ts",
   "scripts": {
     "test": "node_modules/.bin/ava test.js",
     "staged": "node_modules/.bin/lint-staged",
