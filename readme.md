@@ -56,13 +56,13 @@ const deep = [
     "name", "John Doe"
   ],
   [
-    "skills", 0, "Node.js"
+    ["skills", 0], "Node.js"
   ],
   [
-    "skills", 1, "JavaScript"
+    ["skills", 1], "JavaScript"
   ],
   [
-    "skills", 2, "Preact"
+    ["skills", 2], "Preact"
   ]
 ]
 
