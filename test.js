@@ -178,7 +178,7 @@ test("Should resolve a complex object", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should return a flat collection", t => {
+test("Should return a collection", t => {
   t.plan(1)
 
   const expected = [
@@ -269,4 +269,75 @@ test("Should return a flat collection", t => {
   ])
 
   t.deepEqual(actual, expected)
+})
+
+test("Should create flat array from entries", t => {
+  t.plan(1)
+
+  const expected = ["Zero", "One", "Two", "Three"]
+
+  const actual = objectDeepFromEntries([
+    [0, "Zero"],
+    [1, "One"],
+    [2, "Two"],
+    [3, "Three"]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should create flat array with mixed values", t => {
+  t.plan(1)
+
+  const expected = [42, {number: 42}, "Some string"]
+
+  const actual = objectDeepFromEntries([
+    [0, 42],
+    ["number", 42],
+    [2, "Some string"]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should create deep array with mixed values", t => {
+  t.plan(1)
+
+  const expected = [42, {person: {name: "John Doe"}}, "Some string"]
+
+  const actual = objectDeepFromEntries([
+    [
+      0, 42
+    ],
+    [
+      ["person", "name"], "John Doe"
+    ],
+    [
+      2, "Some string"
+    ]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should throw a TypeError when invoked without any arguments", t => {
+  t.plan(3)
+
+  const trap = () => objectDeepFromEntries()
+
+  const err = t.throws(trap)
+
+  t.true(err instanceof TypeError)
+  t.is(err.message, "Expected an array of entries. Received undefined")
+})
+
+test("Should throw an error when entries are not an array", t => {
+  t.plan(3)
+
+  const trap = () => objectDeepFromEntries({})
+
+  const err = t.throws(trap)
+
+  t.true(err instanceof TypeError)
+  t.is(err.message, "Expected an array of entries. Received object")
 })

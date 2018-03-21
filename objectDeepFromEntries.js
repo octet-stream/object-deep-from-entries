@@ -1,6 +1,12 @@
 const isNaN = require("./isNaN")
+const isNumber = require("./isNumber")
+const getTag = require("./getTag")
 
 const isArray = Array.isArray
+
+const hasNumKey = entries => entries.find(
+  ([path]) => isNumber(path) || (isArray(path) && isNumber(path[0]))
+)
 
 /**
  * @param {array|object} target
@@ -65,14 +71,16 @@ function deepFromEntries(target, path, value) {
  * // -> {name: "John Doe", age: 25, gender: "Male"}
  */
 function objectDeepFromEntries(entries) {
+  if (!isArray(entries)) {
+    throw new TypeError(
+      `Expected an array of entries. Received ${getTag(entries)}`
+    )
+  }
+
   let res = {}
   let isCollection = false
 
-  if (
-    entries.find(([path]) => (
-      typeof path === "number" || (isArray(path) && typeof path[0] === "number")
-    ))
-  ) {
+  if (hasNumKey(entries)) {
     res = []
     isCollection = true
   }
@@ -102,3 +110,10 @@ function objectDeepFromEntries(entries) {
 }
 
 module.exports = objectDeepFromEntries
+module.exports.default = objectDeepFromEntries
+
+// For babel
+Object.defineProperty(module.exports, "__esModule", {
+  value: true,
+  enumerable: false
+})

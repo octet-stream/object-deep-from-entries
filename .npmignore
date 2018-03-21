@@ -2,6 +2,8 @@ node_modules
 .nyc_output
 .DS_Store
 coverage
+yarn-error.log
+npm-debug.log
 
 .gitignore
 .editorconfig
