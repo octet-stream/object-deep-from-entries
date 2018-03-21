@@ -1,6 +1,6 @@
 {
   "name": "object-deep-from-entries",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Make an object or collection from entries deeply.",
   "main": "object-deep-from-entries.js",
   "repository": "octet-stream/object-deep-from-entries",
