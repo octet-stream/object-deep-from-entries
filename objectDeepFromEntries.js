@@ -18,28 +18,28 @@ const hasNumKey = entries => entries.find(
  * @api private
  */
 function deepFromEntries(target, path, value) {
-  const currentPath = path.shift()
-  const curr = isNaN(currentPath) ? {} : []
+  const key = path.shift()
+  const curr = isNaN(key) ? {} : []
 
   if (!target) {
     if (path.length === 0) {
-      curr[currentPath] = value
+      curr[key] = value
 
       return curr
     }
 
-    curr[currentPath] = deepFromEntries(curr[currentPath], path, value)
+    curr[key] = deepFromEntries(curr[key], path, value)
 
     return curr
   }
 
   if (path.length === 0) {
-    target[currentPath] = value
+    target[key] = value
 
     return target
   }
 
-  target[currentPath] = deepFromEntries(target[currentPath], path, value)
+  target[key] = deepFromEntries(target[key], path, value)
 
   return target
 }
