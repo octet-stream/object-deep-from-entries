@@ -6,7 +6,6 @@
   "repository": "octet-stream/object-deep-from-entries",
   "author": "Nick K. <nick.kruchinin@gmail.com>",
   "license": "MIT",
-  "private": false,
   "types": "object-deep-from-entries.d.ts",
   "scripts": {
     "test": "node_modules/.bin/ava test.js",
