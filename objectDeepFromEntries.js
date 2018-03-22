@@ -1,6 +1,7 @@
 const isNaN = require("./isNaN")
-const isNumber = require("./isNumber")
 const getTag = require("./getTag")
+const isNumber = require("./isNumber")
+const isPlainObject = require("./isPlainObject")
 
 const isArray = Array.isArray
 
@@ -17,31 +18,44 @@ const hasNumKey = entries => entries.find(
  *
  * @api private
  */
-function deepFromEntries(target, path, value) {
+function deepFromEntries(parent, parentKey, path, value) {
   const key = path.shift()
-  const curr = isNaN(key) ? {} : []
+  const current = isNaN(key) ? {} : []
 
-  if (!target) {
+  // TODO: Refactor that function to reduce code.
+  if (!parent) {
     if (path.length === 0) {
-      curr[key] = value
+      current[key] = value
 
-      return curr
+      return current
     }
 
-    curr[key] = deepFromEntries(curr[key], path, value)
+    current[key] = deepFromEntries(current[key], key, path, value)
 
-    return curr
+    return current
+  }
+
+  if (isPlainObject(parent) || isArray(parent)) {
+    if (path.length === 0) {
+      parent[key] = value
+
+      return parent
+    }
+
+    parent[key] = deepFromEntries(parent[key], key, path, value)
+
+    return parent
   }
 
   if (path.length === 0) {
-    target[key] = value
+    current[key] = value
 
-    return target
+    return current
   }
 
-  target[key] = deepFromEntries(target[key], path, value)
+  current[key] = deepFromEntries(parent[key], key, path, value)
 
-  return target
+  return current
 }
 
 /**
@@ -95,14 +109,14 @@ function objectDeepFromEntries(entries) {
 
     const root = path.shift()
 
-    if (path.length < 1 && (isCollection && isNaN(root))) {
+    if (path.length === 0 && (isCollection && isNaN(root))) {
       res.push({[root]: value})
-    } else if (path.length < 1) {
+    } else if (path.length === 0) {
       res[root] = value
     } else if (isCollection && isNaN(root)) {
-      res.push({[root]: deepFromEntries(res[root], path, value)})
+      res.push({[root]: deepFromEntries(res[root], root, path, value)})
     } else {
-      res[root] = deepFromEntries(res[root], path, value)
+      res[root] = deepFromEntries(res[root], root, path, value)
     }
   }
 

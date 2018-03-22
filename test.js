@@ -320,6 +320,69 @@ test("Should create deep array with mixed values", t => {
   t.deepEqual(actual, expected)
 })
 
+test("Should reassing values associated with root same key", t => {
+  t.plan(1)
+
+  const expected = {
+    key: "replacement"
+  }
+
+  const actual = objectDeepFromEntries([
+    ["key", "value"],
+    ["key", "replacement"]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should replace nested values associated with root same key", t => {
+  t.plan(1)
+
+  const expected = {
+    key: {
+      deep: "value"
+    }
+  }
+
+  const actual = objectDeepFromEntries([
+    [
+      "key", "value"
+    ],
+    [
+      ["key", "deep"], "value"
+    ]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
+test("Should replace a way deeper value associated with root same key", t => {
+  t.plan(1)
+
+  const expected = {
+    key: {
+      we: {
+        need: {
+          to: {
+            go: "deeper"
+          }
+        }
+      }
+    }
+  }
+
+  const actual = objectDeepFromEntries([
+    [
+      "key", "value"
+    ],
+    [
+      ["key", "we", "need", "to", "go"], "deeper"
+    ]
+  ])
+
+  t.deepEqual(actual, expected)
+})
+
 test("Should throw a TypeError when invoked without any arguments", t => {
   t.plan(3)
 
