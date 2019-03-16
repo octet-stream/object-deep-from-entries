@@ -1,4 +1,6 @@
 {
-  "pre-commit": "npm run staged",
-  "pre-push": "npm run test"
+  "hooks": {
+    "pre-commit": "npm run staged",
+    "pre-push": "npm run test"
+  }
 }
