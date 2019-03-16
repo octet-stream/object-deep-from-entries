@@ -404,3 +404,22 @@ test("Should throw an error when entries are not an array", t => {
   t.true(err instanceof TypeError)
   t.is(err.message, "Expected an array of entries. Received object")
 })
+
+// Tests for isPlainObject
+test("isPlainObject: Should return true on object created from literal", t => {
+  t.plan(1)
+
+  t.true(isPlainObject({}))
+})
+
+test("isPlainObject: Should return true on Object.create(null) objects", t => {
+  t.plan(1)
+
+  t.true(isPlainObject(Object.create(null)))
+})
+
+test("isPlainObject: Should return false on non-object value", t => {
+  t.plan(1)
+
+  t.false(isPlainObject(451))
+})
