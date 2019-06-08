@@ -20,8 +20,8 @@
     "test": "node_modules/.bin/ava test.js",
     "staged": "node_modules/.bin/lint-staged",
     "coverage": "node_modules/.bin/nyc npm run test",
-    "report": "npm run coverage && node_modules/.bin/nyc report --reporter=html npm run test",
-    "ci": "npm run coverage && node_modules/.bin/nyc report --reporter=lcov npm run test && node_modules/.bin/codecov"
+    "report": "npm run coverage && node_modules/.bin/nyc report --reporter=html",
+    "ci": "npm run coverage && node_modules/.bin/nyc report --reporter=lcov && node_modules/.bin/codecov"
   },
   "devDependencies": {
     "@octetstream/eslint-config": "3.0.0",
