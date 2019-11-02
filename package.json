@@ -24,14 +24,14 @@
     "ci": "npm run coverage && node_modules/.bin/nyc report --reporter=lcov && node_modules/.bin/codecov"
   },
   "devDependencies": {
-    "@octetstream/eslint-config": "3.0.0",
-    "ava": "2.0.0",
-    "codecov": "3.5.0",
-    "eslint": "5.16.0",
-    "eslint-plugin-ava": "7.0.0",
-    "husky": "2.4.0",
-    "lint-staged": "8.2.0",
-    "nyc": "14.1.1",
-    "size-limit": "1.3.6"
+    "@octetstream/eslint-config": "4.0.0",
+    "@size-limit/preset-small-lib": "2.1.6",
+    "ava": "2.4.0",
+    "codecov": "3.6.1",
+    "eslint": "6.6.0",
+    "eslint-plugin-ava": "9.0.0",
+    "husky": "3.0.9",
+    "lint-staged": "9.4.2",
+    "nyc": "14.1.1"
   }
 }
