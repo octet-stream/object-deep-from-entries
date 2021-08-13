@@ -17,21 +17,25 @@
     "collection"
   ],
   "scripts": {
-    "test": "node_modules/.bin/ava test.js",
-    "staged": "node_modules/.bin/lint-staged",
-    "coverage": "node_modules/.bin/nyc npm run test",
-    "report": "npm run coverage && node_modules/.bin/nyc report --reporter=html",
-    "ci": "npm run coverage && node_modules/.bin/nyc report --reporter=lcov && node_modules/.bin/codecov"
+    "eslint": "eslint --fix *.js",
+    "test": "ava",
+    "staged": "lint-staged",
+    "coverage": "c8 npm test",
+    "report:html": "c8 -r=html npm test",
+    "ci": "c8 npm test && c8 report --reporter=json",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "devDependencies": {
-    "@octetstream/eslint-config": "4.0.0",
-    "@size-limit/preset-small-lib": "2.1.6",
-    "ava": "2.4.0",
-    "codecov": "3.6.1",
-    "eslint": "6.6.0",
-    "eslint-plugin-ava": "9.0.0",
-    "husky": "3.0.9",
-    "lint-staged": "9.4.2",
-    "nyc": "14.1.1"
+    "@octetstream/eslint-config": "5.0.0",
+    "@size-limit/preset-small-lib": "5.0.3",
+    "ava": "3.15.0",
+    "c8": "^7.8.0",
+    "eslint": "7.32.0",
+    "eslint-plugin-ava": "12.0.0",
+    "husky": "7.0.1",
+    "lint-staged": "11.1.2",
+    "pinst": "^2.1.6"
   }
 }

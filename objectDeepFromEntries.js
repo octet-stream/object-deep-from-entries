@@ -1,9 +1,9 @@
-const isNaN = require("./isNaN")
-const getTag = require("./getTag")
-const isNumber = require("./isNumber")
 const isPlainObject = require("./isPlainObject")
+const isNumber = require("./isNumber")
+const getTag = require("./getTag")
+const isNaN = require("./isNaN")
 
-const isArray = Array.isArray
+const {isArray} = Array
 
 const hasNumKey = entries => entries.find(
   ([path]) => isNumber(path) || (isArray(path) && isNumber(path[0]))
@@ -61,7 +61,7 @@ function deepFromEntries(parent, parentKey, path, value) {
 /**
  * Create an object from given entries
  *
- * @param {array} entries
+ * @param {any[]} entries
  *
  * @return {object}
  *
@@ -99,11 +99,11 @@ function objectDeepFromEntries(entries) {
     isCollection = true
   }
 
-  for (const entry of entries) {
-    let path = entry[0]
-    const value = entry[1]
-
-    if (!isArray(path)) {
+  for (let [path, value] of entries) {
+    if (isArray(path)) {
+      // Copy entity path, because Array#shift() is used later.
+      path = path.slice()
+    } else {
       path = [path]
     }
 

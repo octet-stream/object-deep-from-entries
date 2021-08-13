@@ -1,11 +1,18 @@
 node_modules
 .nyc_output
+.husky
 .DS_Store
 coverage
+pnpm-lock.yaml
 yarn-error.log
 npm-debug.log
 
 .gitignore
 .editorconfig
 .eslintrc.json
+.c8rc.json
+ava.config.cjs
+ava.config.mjs
+ava.config.js
 yarn.lock
+*.test.js
