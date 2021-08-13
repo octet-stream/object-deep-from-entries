@@ -9,6 +9,8 @@ npm-debug.log
 
 .gitignore
 .editorconfig
+.lintstagedrc
+.size-limit.js
 .eslintrc.json
 .c8rc.json
 ava.config.cjs
