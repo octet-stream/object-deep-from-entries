@@ -1,7 +1,11 @@
-type Entries = Array<[string | number | Array<string | number>, any]>
+type EntryKey = string | number
 
-type Result = Array<{[key : string] : any} | any> | {[key : string] : any}
+type EntryPath = EntryKey | EntryKey[]
 
-declare function objectDeepFromEntries(entries : Entries) : Result
+type Entry = [EntryPath, unknown]
+
+type Entries = Entry[]
+
+declare function objectDeepFromEntries(entries: Entries): object | unknown[]
 
 export default objectDeepFromEntries

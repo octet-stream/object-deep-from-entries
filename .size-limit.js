@@ -1,6 +1,6 @@
 module.exports = [
   {
     path: "objectDeepFromEntries.js",
-    limit: "487 B"
+    limit: "481 B"
   }
 ]

@@ -63,7 +63,7 @@ function deepFromEntries(parent, parentKey, path, value) {
  *
  * @param {any[]} entries
  *
- * @return {object}
+ * @return {object | unknown[]}
  *
  * @api public
  *
