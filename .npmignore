@@ -1,5 +1,5 @@
 node_modules
-.nyc_output
+.github
 .husky
 .DS_Store
 coverage
