@@ -5,16 +5,12 @@ const objectDeepFromEntries = require("./objectDeepFromEntries")
 const isPlainObject = require("./isPlainObject")
 
 test("Should always return a plain object when array given", t => {
-  t.plan(1)
-
   const actual = objectDeepFromEntries([])
 
   t.true(isPlainObject(actual))
 })
 
 test("Should correctly resolve simple (flat) object", t => {
-  t.plan(1)
-
   const expected = {
     name: "John Doe",
     age: 25,
@@ -37,8 +33,6 @@ test("Should correctly resolve simple (flat) object", t => {
 })
 
 test("Should correctly create an array", t => {
-  t.plan(1)
-
   const expected = {
     foo: [
       42, "bar", {
@@ -85,8 +79,6 @@ test("Should correctly create an array", t => {
 })
 
 test("Should resolve a complex object", t => {
-  t.plan(1)
-
   const expected = {
     subjects: [
       {
@@ -179,8 +171,6 @@ test("Should resolve a complex object", t => {
 })
 
 test("Should return a collection", t => {
-  t.plan(1)
-
   const expected = [
     {
       firstName: "John",
@@ -272,8 +262,6 @@ test("Should return a collection", t => {
 })
 
 test("Should create flat array from entries", t => {
-  t.plan(1)
-
   const expected = ["Zero", "One", "Two", "Three"]
 
   const actual = objectDeepFromEntries([
@@ -287,8 +275,6 @@ test("Should create flat array from entries", t => {
 })
 
 test("Should create flat array with mixed values", t => {
-  t.plan(1)
-
   const expected = [42, {number: 42}, "Some string"]
 
   const actual = objectDeepFromEntries([
@@ -301,8 +287,6 @@ test("Should create flat array with mixed values", t => {
 })
 
 test("Should create deep array with mixed values", t => {
-  t.plan(1)
-
   const expected = [42, {person: {name: "John Doe"}}, "Some string"]
 
   const actual = objectDeepFromEntries([
@@ -321,8 +305,6 @@ test("Should create deep array with mixed values", t => {
 })
 
 test("Should reassing values associated with root same key", t => {
-  t.plan(1)
-
   const expected = {
     key: "replacement"
   }
@@ -336,8 +318,6 @@ test("Should reassing values associated with root same key", t => {
 })
 
 test("Should replace nested values associated with root same key", t => {
-  t.plan(1)
-
   const expected = {
     key: {
       deep: "value"
@@ -357,8 +337,6 @@ test("Should replace nested values associated with root same key", t => {
 })
 
 test("Should replace a way deeper value associated with root same key", t => {
-  t.plan(1)
-
   const expected = {
     key: {
       we: {
@@ -384,8 +362,6 @@ test("Should replace a way deeper value associated with root same key", t => {
 })
 
 test("Should throw a TypeError when invoked without any arguments", t => {
-  t.plan(3)
-
   const trap = () => objectDeepFromEntries()
 
   const err = t.throws(trap)
@@ -395,8 +371,6 @@ test("Should throw a TypeError when invoked without any arguments", t => {
 })
 
 test("Should throw an error when entries are not an array", t => {
-  t.plan(3)
-
   const trap = () => objectDeepFromEntries({})
 
   const err = t.throws(trap)
