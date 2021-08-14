@@ -361,6 +361,20 @@ test("Should replace a way deeper value associated with root same key", t => {
   t.deepEqual(actual, expected)
 })
 
+test("Should not affect an array of entry keys", t => {
+  const keys = ["key", "deep"]
+  const {length} = keys
+
+  objectDeepFromEntries([[keys, "value"]])
+  objectDeepFromEntries([[keys, "value"]])
+
+  t.is(
+    keys.length,
+    length,
+    "The length of the keys array should not be changed between calls."
+  )
+})
+
 test("Should throw a TypeError when invoked without any arguments", t => {
   const trap = () => objectDeepFromEntries()
 
