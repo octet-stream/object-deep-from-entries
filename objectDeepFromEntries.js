@@ -5,7 +5,12 @@ const isNaN = require("./isNaN")
 
 const {isArray} = Array
 
-const hasNumKey = entries => entries.find(
+/**
+ * @param {[string | number, unknown][]} entries
+ *
+ * @returns {boolean}
+ */
+const hasNumKey = entries => entries.some(
   ([path]) => isNumber(path) || (isArray(path) && isNumber(path[0]))
 )
 
