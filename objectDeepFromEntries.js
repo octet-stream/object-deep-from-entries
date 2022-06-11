@@ -23,7 +23,7 @@ const hasNumKey = entries => entries.some(
  *
  * @api private
  */
-function deepFromEntries(parent, parentKey, path, value) {
+function deepFromEntries(parent, path, value) {
   const key = path.shift()
   const current = isNaN(key) ? {} : []
 
@@ -35,7 +35,7 @@ function deepFromEntries(parent, parentKey, path, value) {
       return current
     }
 
-    current[key] = deepFromEntries(current[key], key, path, value)
+    current[key] = deepFromEntries(current[key], path, value)
 
     return current
   }
@@ -47,7 +47,7 @@ function deepFromEntries(parent, parentKey, path, value) {
       return parent
     }
 
-    parent[key] = deepFromEntries(parent[key], key, path, value)
+    parent[key] = deepFromEntries(parent[key], path, value)
 
     return parent
   }
@@ -58,7 +58,7 @@ function deepFromEntries(parent, parentKey, path, value) {
     return current
   }
 
-  current[key] = deepFromEntries(parent[key], key, path, value)
+  current[key] = deepFromEntries(parent[key], path, value)
 
   return current
 }
@@ -119,9 +119,9 @@ function objectDeepFromEntries(entries) {
     } else if (path.length === 0) {
       res[root] = value
     } else if (isCollection && isNaN(root)) {
-      res.push({[root]: deepFromEntries(res[root], root, path, value)})
+      res.push({[root]: deepFromEntries(res[root], path, value)})
     } else {
-      res[root] = deepFromEntries(res[root], root, path, value)
+      res[root] = deepFromEntries(res[root], path, value)
     }
   }
 
