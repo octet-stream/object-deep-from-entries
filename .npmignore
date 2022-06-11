@@ -18,3 +18,4 @@ ava.config.mjs
 ava.config.js
 yarn.lock
 *.test.js
+tsconfig.json

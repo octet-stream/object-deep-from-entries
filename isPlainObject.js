@@ -1,3 +1,5 @@
+// @ts-check
+
 const getTag = require("./getTag")
 
 const getPrototype = Object.getPrototypeOf
@@ -6,7 +8,7 @@ const objectCtorString = Object.toString()
 /**
  * @param {unknown} value
  *
- * @return {boolean}
+ * @return {value is Object.<string, any>}
  */
 function isPlainObject(value) {
   if (getTag(value) !== "object") {
