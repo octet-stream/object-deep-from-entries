@@ -2,7 +2,7 @@
   "name": "object-deep-from-entries",
   "version": "0.4.0",
   "description": "Make an object or collection from entries deeply.",
-  "main": "objectDeepFromEntries.js",
+  "main": "./objectDeepFromEntries.js",
   "exports": {
     ".": {
       "import": "./objectDeepFromEntries.mjs",
@@ -43,6 +43,6 @@
     "husky": "8.0.1",
     "lint-staged": "13.0.1",
     "pinst": "3.0.0",
-    "tsd": "^0.20.0"
+    "tsd": "0.20.0"
   }
 }
