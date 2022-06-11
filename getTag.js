@@ -14,7 +14,7 @@ const basicTypes = [
 /**
  * Get a string with type name of the given value
  *
- * @param {any} val
+ * @param {unknown} val
  *
  * @return {string}
  *
