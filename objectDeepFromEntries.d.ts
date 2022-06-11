@@ -6,6 +6,6 @@ type Entry = [EntryPath, unknown]
 
 type Entries = Entry[]
 
-declare function objectDeepFromEntries(entries: Entries): object | unknown[]
+declare function objectDeepFromEntries<T = unknown>(entries: Entries): T
 
 export default objectDeepFromEntries
