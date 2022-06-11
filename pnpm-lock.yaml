@@ -10,6 +10,7 @@ specifiers:
   lint-staged: 13.0.1
   pinst: 3.0.0
   tsd: 0.20.0
+  typescript: 4.7.3
 
 devDependencies:
   '@octetstream/eslint-config': 6.0.2_eslint@8.17.0
@@ -21,6 +22,7 @@ devDependencies:
   lint-staged: 13.0.1
   pinst: 3.0.0
   tsd: 0.20.0
+  typescript: 4.7.3
 
 packages:
 
@@ -2749,6 +2751,12 @@ packages:
   /type-fest/0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
+    dev: true
+
+  /typescript/4.7.3:
+    resolution: {integrity: sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: true
 
   /unbox-primitive/1.0.2:

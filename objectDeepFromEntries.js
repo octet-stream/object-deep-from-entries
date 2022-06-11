@@ -1,3 +1,5 @@
+// @ts-check
+
 const isPlainObject = require("./isPlainObject")
 const isNumber = require("./isNumber")
 const getTag = require("./getTag")
@@ -15,11 +17,11 @@ const hasNumKey = entries => entries.some(
 )
 
 /**
- * @param {array|object} target
- * @param {array} path
+ * @param {any[] | Object.<string, any>} parent
+ * @param {any[]} path
  * @param {any} value
  *
- * @return {array|object}
+ * @return {any[] | Object.<string, any>}
  *
  * @api private
  */
@@ -68,7 +70,7 @@ function deepFromEntries(parent, path, value) {
  *
  * @param {any[]} entries
  *
- * @return {object | unknown[]}
+ * @return {any[] | Object.<string, any>}
  *
  * @api public
  *
