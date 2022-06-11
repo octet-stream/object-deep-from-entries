@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "test": "ava",
-    "tes:dts": "tsd",
+    "test:dts": "tsd",
     "eslint": "eslint --fix *.js",
     "staged": "lint-staged",
     "coverage": "c8 npm test",
