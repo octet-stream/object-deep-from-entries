@@ -9,6 +9,7 @@
   "rules": {
     "prefer-const": ["error", {
       "destructuring": "all"
-    }]
+    }],
+    "import/no-unresolved": ["error", {"ignore": ["ava"]}]
   }
 }
