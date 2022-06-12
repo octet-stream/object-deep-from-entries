@@ -3,13 +3,10 @@
     "ava"
   ],
   "extends": [
-    "@octetstream",
-    "plugin:ava/recommended"
+    "plugin:ava/recommended",
+    "@octetstream/eslint-config"
   ],
   "rules": {
-    "prefer-const": ["error", {
-      "destructuring": "all"
-    }],
     "import/no-unresolved": ["error", {"ignore": ["ava"]}]
   }
 }

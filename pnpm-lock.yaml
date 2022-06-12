@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@octetstream/eslint-config': 6.2.1
+  '@octetstream/eslint-config': 6.2.2
   '@typescript-eslint/eslint-plugin': ^5.27.1
   '@typescript-eslint/parser': ^5.27.1
   ava: 4.3.0
@@ -18,7 +18,7 @@ specifiers:
   typescript: 4.7.3
 
 devDependencies:
-  '@octetstream/eslint-config': 6.2.1_55x735gf5sv6ystvn4rzalkjum
+  '@octetstream/eslint-config': 6.2.2_55x735gf5sv6ystvn4rzalkjum
   '@typescript-eslint/eslint-plugin': 5.27.1_aq7uryhocdbvbqum33pitcm3y4
   '@typescript-eslint/parser': 5.27.1_ud6rd4xtew5bv4yhvkvu24pzm4
   ava: 4.3.0
@@ -135,8 +135,8 @@ packages:
       fastq: 1.11.1
     dev: true
 
-  /@octetstream/eslint-config/6.2.1_55x735gf5sv6ystvn4rzalkjum:
-    resolution: {integrity: sha512-hT2f6ildoU/6+5QCpY/s7tSWNdhRQqI5nhtVYgiM8aaSHfdLXPVRmFlMPXf5/N6pPReVbNBFX275EzafYVD/DQ==}
+  /@octetstream/eslint-config/6.2.2_55x735gf5sv6ystvn4rzalkjum:
+    resolution: {integrity: sha512-RFPLfU3DEKajB1eyykUTKG8YP+Z/2AdoX2LC6uFqlXR6KWD9Wl43xfr0dFsR0xBRqI8DXs4LG4EiKYBU52f7mQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.27.1
       '@typescript-eslint/parser': ^5.27.1

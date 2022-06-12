@@ -35,7 +35,7 @@
     "postpublish": "pinst --enable"
   },
   "devDependencies": {
-    "@octetstream/eslint-config": "6.2.1",
+    "@octetstream/eslint-config": "6.2.2",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "ava": "4.3.0",
