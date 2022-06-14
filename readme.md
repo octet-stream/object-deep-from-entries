@@ -2,9 +2,9 @@
 
 Make an object or collection from entries deeply.
 
-[![devDependencies Status](https://david-dm.org/octet-stream/object-deep-from-entries/dev-status.svg)](https://david-dm.org/octet-stream/object-deep-from-entries?type=dev)
-[![Build Status](https://travis-ci.org/octet-stream/object-deep-from-entries.svg?branch=master)](https://travis-ci.org/octet-stream/object-deep-from-entries)
 [![Code Coverage](https://codecov.io/github/octet-stream/object-deep-from-entries/coverage.svg?branch=master)](https://codecov.io/github/octet-stream/object-deep-from-entries?branch=master)
+[![CI](https://github.com/octet-stream/object-deep-from-entries/workflows/CI/badge.svg)](https://github.com/octet-stream/object-deep-from-entries/actions/workflows/ci.yml)
+[![ESLint](https://github.com/octet-stream/object-deep-from-entries/workflows/ESLint/badge.svg)](https://github.com/octet-stream/object-deep-from-entries/actions/workflows/eslint.yml)
 
 ## Installation
 
