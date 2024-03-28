@@ -1,10 +1,22 @@
 {
-  "include": ["./*.js"],
-  "exclude": ["node_modules", "ava.config.js"],
+  "include": ["**/*.ts"],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "target": "es2020"
+    "outDir": "lib",
+    "target": "es2021",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "checkJs": false,
+    "allowJs": false,
+    "skipLibCheck": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
   }
 }

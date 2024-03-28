@@ -1,33 +1,27 @@
-// @ts-check
+import {isPlainObject} from "./utils/isPlainObject.js"
+import {isNumber} from "./utils/isNumber.js"
+import {isNaN} from "./utils/isNaN.js"
 
-const isPlainObject = require("./isPlainObject")
-const isNumber = require("./isNumber")
-const getTag = require("./getTag")
-const isNaN = require("./isNaN")
+export type EntryKey = string | number
 
-const {isArray} = Array
+export type Entry = [EntryKey | EntryKey[], unknown]
 
-/**
- * @param {[string | number, unknown][]} entries
- *
- * @returns {boolean}
- */
-const hasNumKey = entries => entries.some(
-  ([path]) => isNumber(path) || (isArray(path) && isNumber(path[0]))
+export type Input = Entry[]
+
+export type UnknownObject = Record<EntryKey, unknown>
+
+export type DefaultResult = UnknownObject | unknown[]
+
+const hasNumKey = (entries: Input): boolean => entries.some(
+  ([path]) => isNumber(path) || (Array.isArray(path) && isNumber(path[0]))
 )
 
 /**
- * @param {any[] | Object.<string, any>} parent
- * @param {any[]} path
- * @param {any} value
- *
- * @return {any[] | Object.<string, any>}
- *
- * @api private
+ * @private
  */
-function deepFromEntries(parent, path, value) {
-  const key = path.shift()
-  const current = isNaN(key) ? {} : []
+function deepFromEntries(parent: any, path: any, value: any): any {
+  const key: any = path.shift()
+  const current: DefaultResult = isNaN(key) ? {} : []
 
   // TODO: Refactor that function to reduce code.
   if (!parent) {
@@ -42,7 +36,7 @@ function deepFromEntries(parent, path, value) {
     return current
   }
 
-  if (isPlainObject(parent) || isArray(parent)) {
+  if (isPlainObject(parent) || Array.isArray(parent)) {
     if (path.length === 0) {
       parent[key] = value
 
@@ -68,14 +62,11 @@ function deepFromEntries(parent, path, value) {
 /**
  * Create an object from given entries
  *
- * @param {any[]} entries
- *
- * @return {any[] | Object.<string, any>}
- *
- * @api public
+ * @public
  *
  * @example
  *
+ * ```js
  * const entries = [
  *   [
  *     ["name"], "John Doe"
@@ -90,15 +81,16 @@ function deepFromEntries(parent, path, value) {
  *
  * objectDeepFromEntries(entries)
  * // -> {name: "John Doe", age: 25, gender: "Male"}
+ * ```
  */
-function objectDeepFromEntries(entries) {
-  if (!isArray(entries)) {
-    throw new TypeError(
-      `Expected an array of entries. Received ${getTag(entries)}`
-    )
+export function objectDeepFromEntries<TResult extends DefaultResult = UnknownObject>(
+  entries: Input
+): TResult {
+  if (!Array.isArray(entries)) {
+    throw new TypeError("Expected an array of entries.")
   }
 
-  let res = {}
+  let res: any = {}
   let isCollection = false
 
   if (hasNumKey(entries)) {
@@ -107,14 +99,14 @@ function objectDeepFromEntries(entries) {
   }
 
   for (let [path, value] of entries) {
-    if (isArray(path)) {
+    if (Array.isArray(path)) {
       // Copy entity path, because Array#shift() is used later.
       path = path.slice()
     } else {
       path = [path]
     }
 
-    const root = path.shift()
+    const root: any = path.shift()
 
     if (path.length === 0 && (isCollection && isNaN(root))) {
       res.push({[root]: value})
@@ -127,8 +119,5 @@ function objectDeepFromEntries(entries) {
     }
   }
 
-  return res
+  return res as TResult
 }
-
-module.exports = objectDeepFromEntries
-module.exports.default = objectDeepFromEntries

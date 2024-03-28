@@ -1,16 +1,16 @@
-const test = require("ava")
+import test from "ava"
 
-const objectDeepFromEntries = require("./objectDeepFromEntries")
+import {objectDeepFromEntries} from "./objectDeepFromEntries.js"
 
-const isPlainObject = require("./isPlainObject")
+import {isPlainObject} from "./utils/isPlainObject.js"
 
-test("Should always return a plain object when array given", t => {
+test("Returns empty object for empty entries", t => {
   const actual = objectDeepFromEntries([])
 
   t.true(isPlainObject(actual))
 })
 
-test("Should correctly resolve simple (flat) object", t => {
+test("Creates simple (flat) object", t => {
   const expected = {
     name: "John Doe",
     age: 25,
@@ -32,7 +32,7 @@ test("Should correctly resolve simple (flat) object", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should correctly create an array", t => {
+test("Creates an array", t => {
   const expected = {
     foo: [
       42, "bar", {
@@ -78,7 +78,7 @@ test("Should correctly create an array", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should resolve a complex object", t => {
+test("Creates a complex object", t => {
   const expected = {
     subjects: [
       {
@@ -170,7 +170,7 @@ test("Should resolve a complex object", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should return a collection", t => {
+test("Creates a collection", t => {
   const expected = [
     {
       firstName: "John",
@@ -261,7 +261,7 @@ test("Should return a collection", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should create flat array from entries", t => {
+test("Creates flat array from entries", t => {
   const expected = ["Zero", "One", "Two", "Three"]
 
   const actual = objectDeepFromEntries([
@@ -274,7 +274,7 @@ test("Should create flat array from entries", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should create flat array with mixed values", t => {
+test("Creates flat array with mixed values", t => {
   const expected = [42, {number: 42}, "Some string"]
 
   const actual = objectDeepFromEntries([
@@ -286,7 +286,7 @@ test("Should create flat array with mixed values", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should create deep array with mixed values", t => {
+test("Creates deep array with mixed values", t => {
   const expected = [42, {person: {name: "John Doe"}}, "Some string"]
 
   const actual = objectDeepFromEntries([
@@ -304,7 +304,7 @@ test("Should create deep array with mixed values", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should reassing values associated with root same key", t => {
+test("Later values override previous for the same key", t => {
   const expected = {
     key: "replacement"
   }
@@ -317,7 +317,7 @@ test("Should reassing values associated with root same key", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should replace nested values associated with root same key", t => {
+test("Later entry overrides previous with nested objects", t => {
   const expected = {
     key: {
       deep: "value"
@@ -336,7 +336,7 @@ test("Should replace nested values associated with root same key", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should replace a way deeper value associated with root same key", t => {
+test("Later entry overrides previous with deep nested objects", t => {
   const expected = {
     key: {
       we: {
@@ -361,7 +361,7 @@ test("Should replace a way deeper value associated with root same key", t => {
   t.deepEqual(actual, expected)
 })
 
-test("Should not affect an array of entry keys", t => {
+test("Does not mutate the input keys", t => {
   const keys = ["key", "deep"]
   const {length} = keys
 
@@ -375,20 +375,22 @@ test("Should not affect an array of entry keys", t => {
   )
 })
 
-test("Should throw a TypeError when invoked without any arguments", t => {
+test("Throws TypeError when invoked without any arguments", t => {
+  // @ts-expect-error
   const trap = () => objectDeepFromEntries()
 
   const err = t.throws(trap)
 
   t.true(err instanceof TypeError)
-  t.is(err.message, "Expected an array of entries. Received undefined")
+  t.is(err.message, "Expected an array of entries.")
 })
 
-test("Should throw an error when entries are not an array", t => {
+test("Throws TypeError error when entries are not an array", t => {
+  // @ts-expect-error
   const trap = () => objectDeepFromEntries({})
 
   const err = t.throws(trap)
 
   t.true(err instanceof TypeError)
-  t.is(err.message, "Expected an array of entries. Received object")
+  t.is(err.message, "Expected an array of entries.")
 })
