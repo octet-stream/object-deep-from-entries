@@ -1,1 +1,0 @@
-npm run test:dts && npm run coverage

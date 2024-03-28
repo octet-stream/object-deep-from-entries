@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "object-deep-from-entries",
   "version": "0.4.0",
   "description": "Make an object or collection from entries deeply.",
@@ -30,25 +31,16 @@
     "coverage": "c8 npm test",
     "report:html": "c8 -r=html npm test",
     "ci": "npm run test:dts && c8 npm test && c8 report --reporter=json",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@octetstream/eslint-config": "6.2.2",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
-    "ava": "4.3.0",
-    "c8": "7.11.3",
-    "eslint": "8.17.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
-    "eslint-plugin-ava": "13.2.0",
-    "eslint-plugin-import": "^2.26.0",
-    "husky": "8.0.1",
-    "lint-staged": "13.0.1",
-    "pinst": "3.0.0",
-    "tsd": "0.21.0",
-    "typescript": "4.7.3"
+    "@octetstream/eslint-config": "8.2.5",
+    "ava": "6.1.2",
+    "c8": "9.1.0",
+    "eslint": "8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "15.2.2",
+    "typescript": "5.4.3"
   }
 }

@@ -1,12 +1,6 @@
 {
-  "plugins": [
-    "ava"
-  ],
   "extends": [
-    "plugin:ava/recommended",
-    "@octetstream/eslint-config"
-  ],
-  "rules": {
-    "import/no-unresolved": ["error", {"ignore": ["ava"]}]
-  }
+    "@octetstream/eslint-config/typescript/esm",
+    "@octetstream/eslint-config/typescript/ava"
+  ]
 }
